@@ -13,12 +13,12 @@ router.post('/add', verifyAdmin, async (req, res) => {
             return res.status(401).json({message: 'Authentication required'});
         }
 
-        const {name, author, imageUrl} = req.body;
+        const {name, author , imageurl} = req.body;
         if(!author) return res.status(400).json({message: 'Author is required'});
-        if(!imageUrl) return res.status(400).json({message: 'Image URL is required'});
+        if(!imageurl) return res.status(400).json({message: 'Image URL is required'});
         
-        console.log('Creating book with:', {name, author, imageUrl});
-        const newBook = new Book({name, author, imageUrl});
+        console.log('Creating book with:', {name, author, imageUrl: imageurl});
+        const newBook = new Book({name, author, imageUrl: imageurl});
         await newBook.save();
         console.log('Book saved successfully:', newBook);
         return res.json({added: true, book: newBook});
