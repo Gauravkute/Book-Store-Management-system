@@ -21,7 +21,7 @@ const AddBook = () => {
     setStatusMsg('Adding book...');
     
     // Log the data being sent
-    const bookData = {name, author, imageUrl}; // Match the database schema
+    const bookData = {name, author, imageUrl}; // Changed to imageUrl to match schema
     console.log('Attempting to add book with data:', bookData);
     
     try {

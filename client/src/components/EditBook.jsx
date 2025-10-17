@@ -35,13 +35,12 @@ const EditBook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updateData = {
+      console.log('Updating book with data:', { name, author, imageurl });
+      const res = await axios.put(`http://localhost:3001/book/book/${id}`, {
         name,
         author,
-        imageUrl
-      };
-      console.log('Updating book with data:', updateData);
-      const res = await axios.put(`http://localhost:3001/book/book/${id}`, updateData);
+        imageUrl // Match the property name used in database schema
+      });
       
       if (res.data.updated) {
         console.log('Book updated successfully');
